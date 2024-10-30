@@ -10,9 +10,12 @@ export const getProjects = async (
   try {
     const projects = await prisma.project.findMany();
     res.json(projects);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.log(error);
-    res.status(500).json({ message: `Error retrieving projects: ${error.message}` });
+    res
+      .status(500)
+      .json({ message: `Error retrieving projects: ${error.message}` });
   }
 };
 
@@ -26,8 +29,11 @@ export const createProject = async (
       data: { name, description, startDate, endDate },
     });
     res.status(201).json(newProject);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.log(error);
-    res.status(500).json({ message: `Error creating a project: ${error.message}` });
+    res
+      .status(500)
+      .json({ message: `Error creating a project: ${error.message}` });
   }
 };

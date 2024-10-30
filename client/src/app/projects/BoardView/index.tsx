@@ -70,6 +70,7 @@ const TaskColumn = ({
 
   const tasksCount = tasks.filter((task) => task.status === status).length;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const statusColor: any = {
     "To Do": "#2563eb",
     "Work In Progress": "#059669",

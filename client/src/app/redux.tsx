@@ -31,6 +31,7 @@ const createNoopStorage = () => {
     getItem(_key: any) {
       return Promise.resolve(null);
     },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     setItem(_key: any, value: any) {
       return Promise.resolve(value);
     },

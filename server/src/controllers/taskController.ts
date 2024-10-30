@@ -18,6 +18,7 @@ export const getTasks = async (req: Request, res: Response): Promise<void> => {
       },
     });
     res.json(tasks);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.log(error);
     res
@@ -60,6 +61,7 @@ export const createTask = async (
       },
     });
     res.status(201).json(newTask);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.log(error);
     res
@@ -85,6 +87,7 @@ export const updateTaskStatus = async (
       },
     });
     res.json(updatedTask);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.log(error);
     res.status(500).json({ message: `Error updating task: ${error.message}` });
@@ -110,6 +113,7 @@ export const getUserTasks = async (
       },
     });
     res.json(tasks);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.log(error);
     res

@@ -31,6 +31,7 @@ export const search = async (req: Request, res: Response): Promise<void> => {
     });
 
     res.json({ tasks, projects, users });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.log(error);
     res

@@ -8,6 +8,7 @@ export const getUsers = async (req: Request, res: Response): Promise<void> => {
     const users = await prisma.user.findMany();
 
     res.json(users);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.log(error);
     res
