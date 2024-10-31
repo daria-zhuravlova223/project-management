@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getUsers = void 0;
+exports.postUser = exports.getUsers = void 0;
 const client_1 = require("@prisma/client");
 const prisma = new client_1.PrismaClient();
 const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -26,3 +26,20 @@ const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.getUsers = getUsers;
+const postUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { username, cognitoId, profilePictureUrl = 'i1.jpeg', teamId = 1, } = req.body;
+        const newUser = yield prisma.user.create({
+            data: { username, cognitoId, profilePictureUrl, teamId },
+        });
+        res.json({ message: 'User created Successfully', newUser });
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    }
+    catch (error) {
+        console.log(error);
+        res
+            .status(500)
+            .json({ message: `Error retrieving users: ${error.message}` });
+    }
+});
+exports.postUser = postUser;
