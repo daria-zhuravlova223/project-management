@@ -37,6 +37,7 @@ const search = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             },
         });
         res.json({ tasks, projects, users });
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     }
     catch (error) {
         console.log(error);

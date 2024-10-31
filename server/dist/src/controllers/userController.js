@@ -16,6 +16,7 @@ const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const users = yield prisma.user.findMany();
         res.json(users);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     }
     catch (error) {
         console.log(error);

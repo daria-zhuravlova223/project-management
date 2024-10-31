@@ -27,6 +27,7 @@ const getTasks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             },
         });
         res.json(tasks);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     }
     catch (error) {
         console.log(error);
@@ -55,6 +56,7 @@ const createTask = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             },
         });
         res.status(201).json(newTask);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     }
     catch (error) {
         console.log(error);
@@ -77,6 +79,7 @@ const updateTaskStatus = (req, res) => __awaiter(void 0, void 0, void 0, functio
             },
         });
         res.json(updatedTask);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     }
     catch (error) {
         console.log(error);
@@ -100,6 +103,7 @@ const getUserTasks = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             },
         });
         res.json(tasks);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     }
     catch (error) {
         console.log(error);

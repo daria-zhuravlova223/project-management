@@ -16,10 +16,13 @@ const getProjects = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     try {
         const projects = yield prisma.project.findMany();
         res.json(projects);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     }
     catch (error) {
         console.log(error);
-        res.status(500).json({ message: `Error retrieving projects: ${error.message}` });
+        res
+            .status(500)
+            .json({ message: `Error retrieving projects: ${error.message}` });
     }
 });
 exports.getProjects = getProjects;
@@ -30,10 +33,13 @@ const createProject = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             data: { name, description, startDate, endDate },
         });
         res.status(201).json(newProject);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     }
     catch (error) {
         console.log(error);
-        res.status(500).json({ message: `Error creating a project: ${error.message}` });
+        res
+            .status(500)
+            .json({ message: `Error creating a project: ${error.message}` });
     }
 });
 exports.createProject = createProject;

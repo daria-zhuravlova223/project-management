@@ -18,11 +18,12 @@ const path_1 = __importDefault(require("path"));
 const prisma = new client_1.PrismaClient();
 function deleteAllData(orderedFileNames) {
     return __awaiter(this, void 0, void 0, function* () {
-        const modelNames = orderedFileNames.map((fileName) => {
+        const modelNames = orderedFileNames.map(fileName => {
             const modelName = path_1.default.basename(fileName, path_1.default.extname(fileName));
             return modelName.charAt(0).toUpperCase() + modelName.slice(1);
         });
         for (const modelName of modelNames) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const model = prisma[modelName];
             try {
                 yield model.deleteMany({});
@@ -36,22 +37,23 @@ function deleteAllData(orderedFileNames) {
 }
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        const dataDirectory = path_1.default.join(__dirname, "seedData");
+        const dataDirectory = path_1.default.join(__dirname, 'seedData');
         const orderedFileNames = [
-            "team.json",
-            "project.json",
-            "projectTeam.json",
-            "user.json",
-            "task.json",
-            "attachment.json",
-            "comment.json",
-            "taskAssignment.json",
+            'team.json',
+            'project.json',
+            'projectTeam.json',
+            'user.json',
+            'task.json',
+            'attachment.json',
+            'comment.json',
+            'taskAssignment.json',
         ];
         yield deleteAllData(orderedFileNames);
         for (const fileName of orderedFileNames) {
             const filePath = path_1.default.join(dataDirectory, fileName);
-            const jsonData = JSON.parse(fs_1.default.readFileSync(filePath, "utf-8"));
+            const jsonData = JSON.parse(fs_1.default.readFileSync(filePath, 'utf-8'));
             const modelName = path_1.default.basename(fileName, path_1.default.extname(fileName));
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const model = prisma[modelName];
             try {
                 for (const data of jsonData) {
@@ -66,5 +68,5 @@ function main() {
     });
 }
 main()
-    .catch((e) => console.error(e))
+    .catch(e => console.error(e))
     .finally(() => __awaiter(void 0, void 0, void 0, function* () { return yield prisma.$disconnect(); }));

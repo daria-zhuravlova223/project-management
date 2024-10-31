@@ -27,6 +27,7 @@ const getTeams = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             return Object.assign(Object.assign({}, team), { productOwnerUsername: productOwner === null || productOwner === void 0 ? void 0 : productOwner.username, projectManagerUsername: projectManager === null || projectManager === void 0 ? void 0 : projectManager.username });
         })));
         res.json(teamsWithUsernames);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     }
     catch (error) {
         console.log(error);
